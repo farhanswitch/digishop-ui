@@ -42,10 +42,11 @@ const RegisterPage = () => {
       .post("http://localhost:4777/user/register", {
         ...form,
         password: encryptRSA(form.password),
+        confirmPassword: encryptRSA(form.confirmPassword),
         userType: "Buyer",
       })
       .then((res) => {
-        setResponse({ statusMsg: res.data.message });
+        setResponse({ statusMsg: "Success", msgDetails: res.data.message });
         setShowModal(true);
       })
       .catch((err) => {

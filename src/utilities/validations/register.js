@@ -29,6 +29,14 @@ export const validatingRegister = (form) => {
 
   if (!password || password.trim() === "") {
     errors.push({ msg: "Password is required" });
+  } else {
+    const strongPasswordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
+    if (!strongPasswordRegex.test(password)) {
+      errors.push({
+        msg: "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character",
+      });
+    }
   }
 
   if (!confirmPassword || confirmPassword.trim() === "") {

@@ -79,12 +79,12 @@ const LoginPage = () => {
         <div className="w-full h-screen flex items-center justify-center bg-neutral-100">
           <div className="w-full max-w-5xl px-4">
             <button onClick={() => navigate(-1)}>
-              <div className="flex mb-20 -mt-60 items-center">
+              <div className="flex mb-10 -mt-60 items-center">
                 <ArrowLeftIcon width={40} color="brown" />
                 <p className="text-amber-900 font-medium text-2xl">Back</p>
               </div>
             </button>
-            <div className="bg-white px-10 pb-6 rounded-2xl shadow-xl min-h-[600px] w-full max-w-2xl mx-auto flex flex-col justify-between">
+            <div className="bg-white px-10 pb-6 rounded-2xl shadow-xl min-h-[600px] w-full max-w-2xl mx-auto flex flex-col justify-between -mt-40">
               <div className="flex flex-col justify-center flex-1">
                 <h2 className="text-2xl -mt-20 mb-16 font-semibold text-blue-600 text-center">
                   Login
