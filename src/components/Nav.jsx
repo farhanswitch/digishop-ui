@@ -20,7 +20,10 @@ const Nav = () => {
             <Link to={"/"}>Home</Link>
           </li>
           <li>
-            <Link to={"/about"}>Account</Link>
+            <Link to={"/menu"}>Menu</Link>
+          </li>
+          <li>
+            <Link to={"/about"}>Store</Link>
           </li>
           <li>
             <Link to={"/cart"}>

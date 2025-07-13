@@ -3,7 +3,9 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import "./index.css";
 import App from "./App.jsx";
+import HelpPage from "./pages/Help.jsx";
 import LoginPage from "./pages/Login.jsx";
+import MenuPage from "./pages/Menu.jsx";
 import RegisterPage from "./pages/Register.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -13,6 +15,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<App />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/menu" element={<MenuPage />}></Route>
+        <Route path="/help" element={<HelpPage />}></Route>
       </Routes>
     </StrictMode>
   </BrowserRouter>
