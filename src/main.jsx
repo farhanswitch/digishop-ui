@@ -8,6 +8,7 @@ import FAQPage from "./pages/FAQ.jsx";
 import HelpPage from "./pages/Help.jsx";
 import LoginPage from "./pages/Login.jsx";
 import MenuPage from "./pages/Menu.jsx";
+import PrivacyPolicyPage from "./pages/PrivacyPolicy.jsx";
 import RegisterPage from "./pages/Register.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/help" element={<HelpPage />}></Route>
         <Route path="/about-us" element={<AboutPage />}></Route>
         <Route path="/faq" element={<FAQPage />}></Route>
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />}></Route>
       </Routes>
     </StrictMode>
   </BrowserRouter>
