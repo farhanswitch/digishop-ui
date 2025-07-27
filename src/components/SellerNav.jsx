@@ -8,7 +8,7 @@ const SellerNav = () => {
     }`;
 
   return (
-    <div className=" bg-white">
+    <div className=" bg-white pb-4">
       <div className="max-w-5xl mx-auto px-4 pt-4">
         <nav className="flex gap-6">
           <NavLink to="/seller/store-profile" className={linkStyle}>

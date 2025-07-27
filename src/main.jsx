@@ -11,6 +11,7 @@ import MenuPage from "./pages/Menu.jsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicy.jsx";
 import RegisterPage from "./pages/Register.jsx";
 import SellerStoreProfilePage from "./pages/StoreProfile.jsx";
+import SellerProductsPage from "./pages/StoreProducts.jsx";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
@@ -27,6 +28,7 @@ createRoot(document.getElementById("root")).render(
           path="/seller/store-profile"
           element={<SellerStoreProfilePage />}
         />
+        <Route path="/seller/products" element={<SellerProductsPage />} />
       </Routes>
     </StrictMode>
   </BrowserRouter>
