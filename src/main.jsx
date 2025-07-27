@@ -10,7 +10,7 @@ import LoginPage from "./pages/Login.jsx";
 import MenuPage from "./pages/Menu.jsx";
 import PrivacyPolicyPage from "./pages/PrivacyPolicy.jsx";
 import RegisterPage from "./pages/Register.jsx";
-
+import SellerStoreProfilePage from "./pages/StoreProfile.jsx";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
@@ -23,6 +23,10 @@ createRoot(document.getElementById("root")).render(
         <Route path="/about-us" element={<AboutPage />}></Route>
         <Route path="/faq" element={<FAQPage />}></Route>
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />}></Route>
+        <Route
+          path="/seller/store-profile"
+          element={<SellerStoreProfilePage />}
+        />
       </Routes>
     </StrictMode>
   </BrowserRouter>

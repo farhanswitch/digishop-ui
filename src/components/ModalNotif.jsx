@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
+
 const ModalNotif = ({
   showModal,
   setShowModal,
@@ -9,12 +10,14 @@ const ModalNotif = ({
   reset,
 }) => {
   const navigate = useNavigate();
+
   const colors = {
     success: "text-green-500",
     error: "text-red-500",
-    "Nothing changed": "text-yellow-500",
+    warning: "text-yellow-500",
   };
-  console.log(response);
+
+  const type = response.statusMsg?.toLowerCase();
 
   return (
     <div
@@ -25,27 +28,30 @@ const ModalNotif = ({
       <div className="modal border flex flex-col w-[420px] min-h-[450px] bg-white/30 backdrop-blur-xl rounded">
         <div className="msg flex-1 flex flex-col gap-2 justify-start px-6 pt-6">
           <p
-            className={`${
-              colors[response.statusMsg.toLowerCase()]
-            } text-xl font-semibold text-center`}
+            className={`${colors[type]} text-xl font-semibold text-center capitalize`}
           >
             {response.statusMsg}
           </p>
           <div className="text-slate-700 mt-2">
             <p className="mt-10">Details :</p>
-            {response.statusMsg === "Success" ? (
+
+            {type === "success" ? (
               <>
                 <p>{msg ? msg : response?.msg}</p>
                 {response.msgDetails && (
-                  <p className="mt-2">{response.msgDetails}</p>
+                  <p className="mt-2">{response.msgDetails.toString()}</p>
                 )}
               </>
+            ) : type === "warning" ? (
+              <p className="mt-2">
+                {response?.msgDetails || "Warning occurred."}
+              </p>
             ) : (
               <span>
                 {response.errors ? (
-                  response.errors?.map((res, index) => {
-                    return <p key={index}>{res.msg}</p>;
-                  })
+                  response.errors?.map((res, index) => (
+                    <p key={index}>{res.msg}</p>
+                  ))
                 ) : (
                   <span>{response?.msgDetails}</span>
                 )}
@@ -59,7 +65,7 @@ const ModalNotif = ({
           onClick={() => {
             setShowModal(false);
             if (reset) reset();
-            if (response.statusMsg === "Success") {
+            if (type === "success" || type === "warning") {
               if (nextPath) navigate(nextPath);
             }
           }}

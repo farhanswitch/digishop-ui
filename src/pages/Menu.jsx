@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 import LoginIcon from "../icons/Login";
 import PeopleIcon from "../icons/People";
 import PrivacyPolicyIcon from "../icons/PrivacyPolicy";
+import StoreIcon from "../icons/Store";
 
 const MenuPage = () => {
   const [isReady, setIsReady] = useState(false);
@@ -75,6 +76,15 @@ const MenuPage = () => {
                     <PrivacyPolicyIcon width={30} color="black" />
                   </div>
                   <span>Kebijakan Privasi Pengguna</span>
+                </Link>
+                <Link
+                  to={"/seller/store-profile"}
+                  className="w-full flex items-center gap-4 border border-[#A67956] text-[#4B3429] bg-[#EFE5DD] px-4 py-3 rounded-2xl text-left font-semibold"
+                >
+                  <div className="w-6 h-6">
+                    <StoreIcon width={30} color="black" />
+                  </div>
+                  <span>Seller Page</span>
                 </Link>
               </div>
             </div>
