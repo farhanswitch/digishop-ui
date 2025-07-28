@@ -47,12 +47,18 @@ const LoginPage = () => {
       })
       .catch((err) => {
         const arrErrors = [];
-        if (err?.response?.data?.errors) {
+        if (
+          err?.response?.data?.errors &&
+          typeof err.response.data.errors === "object"
+        ) {
           for (const [key, val] of Object.entries(err.response.data.errors)) {
             arrErrors.push({ msg: `${key}: ${val}` });
           }
-        } else if (err?.response?.data?.message) {
-          arrErrors.push({ msg: err.response.data.message });
+        } else if (
+          err?.response?.data?.errors &&
+          typeof err.response.data.errors === "string"
+        ) {
+          arrErrors.push({ msg: err.response.data.errors });
         }
         setResponse({
           statusMsg: "Error",
