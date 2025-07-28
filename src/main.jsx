@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import "./index.css";
 import App from "./App.jsx";
 import AboutPage from "./pages/About.jsx";
+import CartPage from "./pages/Cart.jsx";
 import FAQPage from "./pages/FAQ.jsx";
 import HelpPage from "./pages/Help.jsx";
 import HomePage from "./pages/Home.jsx";
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
         <Route path="/explore" element={<ExplorePage />}></Route>
+        <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/menu" element={<MenuPage />}></Route>
