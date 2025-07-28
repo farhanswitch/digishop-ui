@@ -87,7 +87,8 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {products.map((product) => (
-              <div
+              <Link
+                to={`/product/${product.id}`}
                 key={product.id}
                 className="bg-white shadow rounded-lg overflow-hidden"
               >
@@ -105,7 +106,7 @@ const HomePage = () => {
                     Rp {product.price.toLocaleString("id-ID")}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

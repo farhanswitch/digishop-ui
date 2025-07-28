@@ -15,6 +15,7 @@ import SellerAddProductPage from "./pages/StoreAddProduct.jsx";
 import SellerEditProductPage from "./pages/StoreEditProduct.jsx";
 import SellerStoreProfilePage from "./pages/StoreProfile.jsx";
 import SellerProductsPage from "./pages/StoreProducts.jsx";
+import ProductDetailPage from "./pages/ProductDetail.jsx";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
@@ -28,6 +29,10 @@ createRoot(document.getElementById("root")).render(
         <Route path="/about-us" element={<AboutPage />}></Route>
         <Route path="/faq" element={<FAQPage />}></Route>
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />}></Route>
+        <Route
+          path="/product/:productID"
+          element={<ProductDetailPage />}
+        ></Route>
         <Route
           path="/seller/store-profile"
           element={<SellerStoreProfilePage />}
