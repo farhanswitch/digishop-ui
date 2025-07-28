@@ -7,7 +7,7 @@ const Nav = () => {
   return (
     <nav className="w-full bg-gradient-to-r from-[#947352] via-[#775B43] to-[#49352B] backdrop-blur-md sticky top-0 z-[10] py-4 shadow">
       <div className="inner max-w-5xl mx-auto text-white px-3 flex justify-between items-center">
-        <div className="title text-xl font-semibold">DigiShop</div>
+        <div className="title text-xl font-semibold">EcoLestari</div>
         <div className="flex-1 mx-6">
           <input
             type="text"
@@ -23,7 +23,7 @@ const Nav = () => {
             <Link to={"/menu"}>Menu</Link>
           </li>
           <li>
-            <Link to={"/about"}>Store</Link>
+            <Link to={"/about"}>Notifications</Link>
           </li>
           <li>
             <Link to={"/cart"}>

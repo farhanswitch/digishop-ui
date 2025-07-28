@@ -209,13 +209,13 @@ export default function SellerProductsPage() {
                   <td className="border px-4 py-2">{product.amount}</td>
                   <td className="border px-4 py-2 space-x-2">
                     <button
-                      className="bg-yellow-400 hover:bg-yellow-500 text-white font-medium py-1 px-3 rounded"
+                      className="bg-yellow-400 hover:bg-yellow-500 text-white font-small py-1 px-2 rounded"
                       onClick={() => navigate(`/seller/product/${product.id}`)}
                     >
                       Edit
                     </button>
                     <button
-                      className="bg-red-500 hover:bg-red-600 text-white font-medium py-1 px-3 rounded"
+                      className="bg-red-500 hover:bg-red-600 text-white font-small py-1 px-2 rounded"
                       onClick={() => {
                         setSelectedProduct(product);
                         setShowDeleteConfirm(true);

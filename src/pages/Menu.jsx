@@ -12,6 +12,7 @@ import StoreIcon from "../icons/Store";
 
 const MenuPage = () => {
   const [isReady, setIsReady] = useState(false);
+  const username = localStorage.getItem("digishopUsername") || "";
 
   useEffect(() => {
     setIsReady(true);
@@ -28,7 +29,7 @@ const MenuPage = () => {
                   <PeopleIcon width={53} color={"black"} />
                 </div>
                 <h2 className="text-2xl font-semibold text-neutral-800 mt-3">
-                  Akun Saya
+                  Akun Saya {username ? `- ${username}` : ""}
                 </h2>
               </div>
               <div className="w-full flex flex-col gap-4">

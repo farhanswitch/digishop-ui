@@ -71,7 +71,7 @@ const LoginPage = () => {
             setShowModal={setShowModal}
             response={response}
             msg={"Login success"}
-            nextPath={"/dashboard"}
+            nextPath={"/menu"}
           />
         )}
         <div className="w-full min-h-screen flex items-center justify-center bg-neutral-100">

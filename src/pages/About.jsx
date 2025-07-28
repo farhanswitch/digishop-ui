@@ -22,13 +22,13 @@ const AboutPage = () => {
                   <ArrowLeftIcon width={28} color="#734B29" />
                 </button>
                 <h1 className="text-xl font-bold text-[#422D23]">
-                  Tentang Digishop
+                  Tentang EcoLestari
                 </h1>
               </div>
 
               <div className="text-gray-700 space-y-6 text-justify leading-relaxed">
                 <p>
-                  Digishop hadir dengan tujuan mengenalkan gaya hidup ramah
+                  EcoLestari hadir dengan tujuan mengenalkan gaya hidup ramah
                   lingkungan. kami hadir dengan berbagai produk lokal
                   berkualitas.
                 </p>
@@ -42,7 +42,7 @@ const AboutPage = () => {
                   tercapai dengan tetap peduli terhadap kesejahteraan bumi ini.
                 </p>
                 <p>
-                  Berkolaborasi dengan lebih 100 pelaku usaha lokal, Digishop
+                  Berkolaborasi dengan lebih 100 pelaku usaha lokal, EcoLestari
                   hadir dengan tetap memastikan kualitas produk yang ada, serta
                   memastikan berbagai produk yang kami komersilkan ramah dengan
                   lingkungan.
