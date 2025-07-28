@@ -53,7 +53,7 @@ export default function DetailProductPage() {
 
     const payload = {
       productID,
-      amount: quantity,
+      quantity: quantity,
     };
 
     axios

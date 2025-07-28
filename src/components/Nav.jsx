@@ -18,9 +18,7 @@ const Nav = () => {
   }, [location.search]);
 
   const handleSearch = () => {
-    if (searchText.trim() !== "") {
-      navigate(`/explore?search=${encodeURIComponent(searchText.trim())}`);
-    }
+    navigate(`/explore?search=${encodeURIComponent(searchText.trim())}`);
   };
 
   return (

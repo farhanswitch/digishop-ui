@@ -16,12 +16,14 @@ import SellerEditProductPage from "./pages/StoreEditProduct.jsx";
 import SellerStoreProfilePage from "./pages/StoreProfile.jsx";
 import SellerProductsPage from "./pages/StoreProducts.jsx";
 import ProductDetailPage from "./pages/ProductDetail.jsx";
+import ExplorePage from "./pages/Explore.jsx";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
+        <Route path="/explore" element={<ExplorePage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/menu" element={<MenuPage />}></Route>
