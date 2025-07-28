@@ -1,6 +1,6 @@
 // pages/Cart.jsx
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router";
+import { Link } from "react-router";
 import axios from "axios";
 import Layout from "../components/Layout";
 import ModalNotif from "../components/ModalNotif";
@@ -11,7 +11,7 @@ const CartPage = () => {
   const [response, setResponse] = useState({ status: "", message: "" });
   const [showModal, setShowModal] = useState(false);
   const [nextPath, setNextPath] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const storedToken = localStorage.getItem("digishopToken");

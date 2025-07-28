@@ -48,7 +48,7 @@ const Nav = () => {
             <Link to={"/menu"}>Menu</Link>
           </li>
           <li>
-            <Link to={"/notifications"}>Notifications</Link>
+            <Link to={"/notification"}>Notifications</Link>
           </li>
           <li>
             <Link to={"/cart"}>
