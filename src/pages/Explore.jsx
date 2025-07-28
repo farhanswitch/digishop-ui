@@ -13,18 +13,16 @@ const ExplorePage = () => {
   const searchQuery = searchParams.get("search");
 
   useEffect(() => {
-    if (searchQuery && searchQuery.trim() !== "") {
-      axios
-        .get(
-          `http://localhost:4777/market/explore-products?search=${encodeURIComponent(
-            searchQuery
-          )}`
-        )
-        .then((res) => {
-          setProducts(res.data.data || []);
-        })
-        .catch((err) => console.error(err));
-    }
+    axios
+      .get(
+        `http://localhost:4777/market/explore-products?search=${encodeURIComponent(
+          searchQuery
+        )}`
+      )
+      .then((res) => {
+        setProducts(res.data.data || []);
+      })
+      .catch((err) => console.error(err));
   }, [searchQuery]);
 
   return (

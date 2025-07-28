@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import AboutIcon from "../icons/About";
 import FAQIcon from "../icons/FAQ";
@@ -9,20 +9,30 @@ import LoginIcon from "../icons/Login";
 import PeopleIcon from "../icons/People";
 import PrivacyPolicyIcon from "../icons/PrivacyPolicy";
 import StoreIcon from "../icons/Store";
+import ModalConfirm from "../components/ModalConfirm";
 
 const MenuPage = () => {
   const [isReady, setIsReady] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const username = localStorage.getItem("digishopUsername") || "";
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsReady(true);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("digishopToken");
+    localStorage.removeItem("digishopUsername");
+    localStorage.removeItem("digishopUserID");
+    navigate("/login");
+  };
+
   return (
     <div className={`${isReady ? "block" : "hidden"}`}>
       <Layout pageTitle="Menu">
-        <div className="w-full min-h-screen flex items-center justify-center bg-neutral-100 ">
-          <div className="w-full max-w-5xl px-4 ">
+        <div className="w-full min-h-screen flex items-center justify-center bg-neutral-100">
+          <div className="w-full max-w-5xl px-4">
             <div className="bg-white px-10 py-6 rounded-2xl shadow-xl min-h-[600px] w-full max-w-2xl mx-auto flex flex-col items-center">
               <div className="text-center mb-8">
                 <div className="w-14 h-14 mx-auto border-5 rounded-full flex items-center justify-center">
@@ -32,6 +42,7 @@ const MenuPage = () => {
                   Akun Saya {username ? `- ${username}` : ""}
                 </h2>
               </div>
+
               <div className="w-full flex flex-col gap-4">
                 <Link
                   to={"/login"}
@@ -87,11 +98,27 @@ const MenuPage = () => {
                   </div>
                   <span>Seller Page</span>
                 </Link>
+
+                {/* Tombol Logout */}
+                <button
+                  onClick={() => setShowModal(true)}
+                  className="w-full flex items-center justify-center gap-4 border border-red-600 text-white bg-red-600 hover:bg-red-700 px-4 py-3 rounded-2xl text-left font-semibold"
+                >
+                  Logout
+                </button>
               </div>
             </div>
           </div>
         </div>
       </Layout>
+
+      {/* Modal Konfirmasi Logout */}
+      <ModalConfirm
+        show={showModal}
+        setShow={setShowModal}
+        message="Apakah Anda yakin ingin keluar dari akun ini?"
+        onConfirm={handleLogout}
+      />
     </div>
   );
 };
