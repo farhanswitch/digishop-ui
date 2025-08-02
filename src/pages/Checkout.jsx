@@ -21,8 +21,8 @@ const CheckoutPage = () => {
     const storedToken = localStorage.getItem("digishopToken");
     if (!storedToken) {
       setResponse({
-        status: "warning",
-        message: "Sesi tidak valid. Silakan login terlebih dahulu.",
+        statusMsg: "warning",
+        msgDetails: "Sesi tidak valid. Silakan login terlebih dahulu.",
       });
       setShowModal(true);
       setNextPath("/login");
@@ -43,8 +43,8 @@ const CheckoutPage = () => {
       .catch((err) => {
         console.error(err);
         setResponse({
-          status: "error",
-          message: "Gagal memuat data keranjang.",
+          statusMsg: "error",
+          msgDetails: "Gagal memuat data keranjang.",
         });
         setShowModal(true);
       });
@@ -145,7 +145,7 @@ const CheckoutPage = () => {
                     checked={paymentMethod === "Digital Wallet"}
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
-                  Digital Wallet
+                  e-Wallet
                 </label>
                 <label className="flex items-center gap-2">
                   <input

@@ -15,48 +15,51 @@ export default function SellerStoreProfilePage() {
   const [showModal, setShowModal] = useState(false);
   const [response, setResponse] = useState(null);
   const [nextPath, setNextPath] = useState("/login");
+  const [hasExistingData, setHasExistingData] = useState(false);
 
   const token = localStorage.getItem("digishopToken");
 
   useEffect(() => {
+    console.log({ token });
+
     if (!token) {
+      setLoading(false);
+
       setResponse({
         statusMsg: "warning",
-        msgDetails: "You’re not logged in yet! Please log in first.",
+        msgDetails: "Sesi tidak valid! Silakan login terlebih dahulu.",
       });
       setNextPath("/login");
       setShowModal(true);
       return;
-    } else {
-      axios
-        .get("http://localhost:4777/store", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          RefreshTokenUtility(res);
-
-          if (res.status === 200 && res.data?.data) {
-            setStore({
-              name: res.data.data.name,
-              address: res.data.data.address,
-            });
-          } else {
-            navigate("/login");
-          }
-        })
-        .catch((error) => {
-          if (error.response.status === 401) {
-            setResponse({
-              statusMsg: "warning",
-              msgDetails: "Your session is not valid! Please log in again.",
-            });
-            setShowModal(true);
-          }
-        })
-        .finally(() => setLoading(false));
     }
+
+    axios
+      .get("http://localhost:4777/store", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        RefreshTokenUtility(res);
+        if (res.status === 200 && res.data?.data) {
+          const { name, address } = res.data.data;
+          if (name || address) {
+            setHasExistingData(true);
+            setStore({ name, address });
+          }
+        }
+      })
+      .catch((error) => {
+        if (error.response?.status === 401) {
+          setResponse({
+            statusMsg: "warning",
+            msgDetails: "Sesi tidak valid! Silakan login ulang.",
+          });
+          setShowModal(true);
+        }
+      })
+      .finally(() => setLoading(false));
   }, [navigate, token]);
 
   const handleChange = (e) => {
@@ -66,46 +69,50 @@ export default function SellerStoreProfilePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setUpdating(true);
-    axios
-      .put(
-        "http://localhost:4777/store",
-        { ...store },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+    const url = "http://localhost:4777/store";
+    const method = hasExistingData ? axios.put : axios.post;
+
+    method(
+      url,
+      { ...store },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => {
-        if (res.status === 200) {
+        if (res.status === 200 || res.status === 201) {
           setResponse({
             statusMsg: "Success",
-            msgDetails: "Store profile updated successfully.",
+            msgDetails: hasExistingData
+              ? "Profil toko berhasil diperbarui."
+              : "Profil toko berhasil disimpan.",
           });
           setNextPath("/seller/store-profile");
         } else {
           setResponse({
             statusMsg: "Error",
-            msgDetails: "Unexpected error. Please try again.",
+            msgDetails: "Terjadi kesalahan. Silakan coba lagi.",
           });
-          setNextPath("/seller/store-profile");
         }
       })
       .catch((err) => {
-        if (err.response.status === 401) {
+        if (err.response?.status === 401) {
           setResponse({
             statusMsg: "warning",
-            msgDetails: "Your session is not valid! Please log in again.",
+            msgDetails: "Sesi tidak valid! Silakan login ulang.",
           });
-          setShowModal(true);
-          return;
+          setNextPath("/login");
+        } else {
+          setResponse({
+            statusMsg: "Error",
+            msgDetails:
+              err.response?.data?.msgDetails ||
+              "Gagal menyimpan data profil toko.",
+          });
         }
-        setResponse({
-          statusMsg: "Error",
-          msgDetails:
-            err.response?.data?.msgDetails || "Failed to update store profile.",
-        });
       })
       .finally(() => {
         setShowModal(true);

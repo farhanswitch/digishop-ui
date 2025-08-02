@@ -10,7 +10,8 @@ const ExplorePage = () => {
 
   // Ambil query param 'search' dari URL
   const searchParams = new URLSearchParams(location.search);
-  const searchQuery = searchParams.get("search");
+  const searchQuery =
+    searchParams.get("search") == null ? "" : searchParams.get("search");
 
   useEffect(() => {
     axios

@@ -17,8 +17,8 @@ const CartPage = () => {
     const storedToken = localStorage.getItem("digishopToken");
     if (!storedToken) {
       setResponse({
-        status: "warning",
-        message: "Sesi tidak valid. Silakan login terlebih dahulu.",
+        statusMsg: "warning",
+        msgDetails: "Sesi tidak valid! Silakan login terlebih dahulu.",
       });
       setShowModal(true);
       setNextPath("/login");
@@ -39,8 +39,8 @@ const CartPage = () => {
       .catch((err) => {
         console.error(err);
         setResponse({
-          status: "error",
-          message: "Gagal memuat data keranjang.",
+          statusMsg: "error",
+          msgDetails: "Gagal memuat data keranjang.",
         });
         setShowModal(true);
       });
@@ -74,8 +74,8 @@ const CartPage = () => {
       .catch((err) => {
         console.error(err);
         setResponse({
-          status: "error",
-          message: "Gagal memperbarui keranjang.",
+          statusMsg: "error",
+          msgDetails: "Gagal memperbarui keranjang.",
         });
         setShowModal(true);
       });

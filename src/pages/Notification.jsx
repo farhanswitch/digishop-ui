@@ -16,8 +16,8 @@ const NotificationPage = () => {
 
     if (!token) {
       setResponse({
-        status: "warning",
-        message: "Sesi tidak valid. Silakan login terlebih dahulu.",
+        statusMsg: "warning",
+        msgDetails: "Sesi tidak valid. Silakan login terlebih dahulu.",
       });
       setShowModal(true);
       setNextPath("/login");
@@ -36,8 +36,8 @@ const NotificationPage = () => {
       .catch((err) => {
         console.error(err);
         setResponse({
-          status: "error",
-          message: "Gagal memuat notifikasi.",
+          statusMsg: "error",
+          msgDetails: "Gagal memuat notifikasi.",
         });
         setShowModal(true);
       });

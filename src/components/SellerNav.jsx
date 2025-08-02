@@ -17,9 +17,6 @@ const SellerNav = () => {
           <NavLink to="/seller/products" className={linkStyle}>
             Products
           </NavLink>
-          <NavLink to="/seller/orders" className={linkStyle}>
-            Orders
-          </NavLink>
         </nav>
       </div>
     </div>
