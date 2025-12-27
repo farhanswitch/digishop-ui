@@ -47,7 +47,7 @@ export default function SellerProductsPage() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       .then((res) => {
         RefreshTokenUtility(res);
@@ -66,15 +66,9 @@ export default function SellerProductsPage() {
           setShowModal(true);
         } else {
           const arrErrors = [];
-          if (error.response?.data?.errors) {
-            for (const [key, val] of Object.entries(
-              error.response.data.errors
-            )) {
-              arrErrors.push({ msg: `${key}: ${val}` });
-            }
-          } else if (error?.response?.data?.message) {
-            arrErrors.push({ msg: error.response.data.message });
-          }
+
+          arrErrors.push({ msg: error.response.data.errors });
+
           setNextPath("/");
           setResponse({
             statusMsg: "Error",
@@ -105,27 +99,19 @@ export default function SellerProductsPage() {
         fetchProducts(); // refresh data
       })
       .catch((error) => {
-        const arrErrors = [];
         if (error.response?.status === 401) {
           setResponse({
             statusMsg: "warning",
             msgDetails: "Session expired. Silakan login ulang.",
           });
           setShowModal(true);
+          setNextPath("/");
           return;
         }
-
-        if (error.response?.data?.errors) {
-          for (const [key, val] of Object.entries(error.response.data.errors)) {
-            arrErrors.push({ msg: `${key}: ${val}` });
-          }
-        } else if (error?.response?.data?.message) {
-          arrErrors.push({ msg: error.response.data.message });
-        }
-        setNextPath("/");
+        console.error(error);
         setResponse({
-          statusMsg: "Error",
-          errors: arrErrors,
+          statusMsg: "error",
+          msgDetails: "TEST",
         });
         setShowModal(true);
       })

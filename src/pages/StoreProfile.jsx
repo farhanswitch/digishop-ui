@@ -80,15 +80,13 @@ export default function SellerStoreProfilePage() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     )
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           setResponse({
             statusMsg: "Success",
-            msgDetails: hasExistingData
-              ? "Profil toko berhasil diperbarui."
-              : "Profil toko berhasil disimpan.",
+            msgDetails: res?.data?.message,
           });
           setNextPath("/seller/store-profile");
         } else {
