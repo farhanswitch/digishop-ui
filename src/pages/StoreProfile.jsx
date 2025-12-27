@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import axios from "axios";
 
 import ModalNotif from "../components/ModalNotif";
 import Layout from "../components/Layout";
 import RefreshTokenUtility from "../utilities/auth/xrf";
 import SellerNav from "../components/SellerNav";
+import {
+  getStoreProfile,
+  createStoreProfile,
+  updateStoreProfile,
+} from "../services/store.service";
 
 export default function SellerStoreProfilePage() {
   const navigate = useNavigate();
@@ -34,12 +38,7 @@ export default function SellerStoreProfilePage() {
       return;
     }
 
-    axios
-      .get("http://localhost:4777/store", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    getStoreProfile()
       .then((res) => {
         RefreshTokenUtility(res);
         if (res.status === 200 && res.data?.data) {
@@ -69,19 +68,9 @@ export default function SellerStoreProfilePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setUpdating(true);
-    const url = "http://localhost:4777/store";
-    const method = hasExistingData ? axios.put : axios.post;
+    const method = hasExistingData ? updateStoreProfile : createStoreProfile;
 
-    method(
-      url,
-      { ...store },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    )
+    method({ ...store })
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           setResponse({

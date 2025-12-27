@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
-import axios from "axios";
 
 import Layout from "../components/Layout";
 import ModalNotif from "../components/ModalNotif";
 import ArrowLeftIcon from "../icons/ArrowLeft";
 import { validatingLogin } from "../utilities/validations/login";
 import { encryptRSA } from "../utilities/cryptographies/rsa";
+import { loginUser } from "../services/auth.service";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -30,12 +30,11 @@ const LoginPage = () => {
       setShowModal(true);
       return;
     }
-    axios
-      .post("http://localhost:4777/user/login", {
-        username,
-        password: encryptRSA(password),
-        userType: "Buyer",
-      })
+    loginUser({
+      username,
+      password: encryptRSA(password),
+      userType: "Buyer",
+    })
       .then((response) => {
         localStorage.setItem("digishopToken", response.data.data.token);
         localStorage.setItem("digishopUsername", response.data.data.username);

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router";
-import axios from "axios";
 import Layout from "../components/Layout";
 import ModalNotif from "../components/ModalNotif";
+import { getNotifications } from "../services/notification.service";
 
 const NotificationPage = () => {
   const [notifications, setNotifications] = useState([]);
@@ -24,12 +24,7 @@ const NotificationPage = () => {
       return;
     }
 
-    axios
-      .get("http://localhost:4777/market/notifications", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    getNotifications()
       .then((res) => {
         setNotifications(res.data.data);
       })

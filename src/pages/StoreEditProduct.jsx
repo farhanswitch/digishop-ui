@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import axios from "axios";
 
 import ArrowLeftIcon from "../icons/ArrowLeft";
 import Layout from "../components/Layout";
 import ModalNotif from "../components/ModalNotif";
 import SellerNav from "../components/SellerNav";
 import RefreshTokenUtility from "../utilities/auth/xrf";
+import {
+  getProductById,
+  updateProduct,
+} from "../services/store.service";
+import { getCategories } from "../services/product.service";
+import { uploadProductImage } from "../services/file.service";
 
 export default function SellerEditProductPage() {
   const { id } = useParams();
@@ -42,8 +47,7 @@ export default function SellerEditProductPage() {
     }
 
     // Fetch categories
-    axios
-      .get("http://localhost:4777/market/categories")
+    getCategories()
       .then((res) => setCategories(res.data.data))
       .catch(() => {
         setResponse({
@@ -54,12 +58,7 @@ export default function SellerEditProductPage() {
       });
 
     // Fetch product detail
-    axios
-      .get(`http://localhost:4777/store/product/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    getProductById(id)
       .then((res) => {
         const product = res.data.data;
         setForm({
@@ -109,12 +108,7 @@ export default function SellerEditProductPage() {
     const formData = new FormData();
     formData.append("file", file);
 
-    axios
-      .post("http://localhost:4777/file/product-photo/upload", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    uploadProductImage(formData)
       .then((res) => {
         setImageID(res.data.id);
       })
@@ -150,12 +144,7 @@ export default function SellerEditProductPage() {
       imageID,
     };
 
-    axios
-      .put("http://localhost:4777/store/product", payload, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    updateProduct(payload)
       .then((res) => {
         RefreshTokenUtility(res);
         setResponse({

@@ -1,8 +1,8 @@
 // pages/ExplorePage.jsx
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import axios from "axios";
 import Layout from "../components/Layout";
+import { searchProducts } from "../services/product.service";
 
 const ExplorePage = () => {
   const location = useLocation();
@@ -14,12 +14,7 @@ const ExplorePage = () => {
     searchParams.get("search") == null ? "" : searchParams.get("search");
 
   useEffect(() => {
-    axios
-      .get(
-        `http://localhost:4777/market/explore-products?search=${encodeURIComponent(
-          searchQuery
-        )}`
-      )
+    searchProducts(searchQuery)
       .then((res) => {
         setProducts(res.data.data || []);
       })

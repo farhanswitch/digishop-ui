@@ -1,9 +1,9 @@
 // pages/CheckoutPage.jsx
 import { useEffect, useState } from "react";
 // import { useNavigate } from "react-router";
-import axios from "axios";
 import Layout from "../components/Layout";
 import ModalNotif from "../components/ModalNotif";
+import { getCartItems } from "../services/cart.service";
 
 const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -31,12 +31,7 @@ const CheckoutPage = () => {
 
     setToken(storedToken);
 
-    axios
-      .get("http://localhost:4777/market/cart", {
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-        },
-      })
+    getCartItems()
       .then((res) => {
         setCartItems(res.data.data);
       })

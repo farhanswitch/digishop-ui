@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
-import axios from "axios";
 
 import Layout from "../components/Layout";
 import ModalNotif from "../components/ModalNotif";
 import ArrowLeftIcon from "../icons/ArrowLeft";
 import { encryptRSA } from "../utilities/cryptographies/rsa";
 import { validatingRegister } from "../utilities/validations/register";
+import { registerUser } from "../services/auth.service";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -38,13 +38,12 @@ const RegisterPage = () => {
       setShowModal(true);
       return;
     }
-    axios
-      .post("http://localhost:4777/user/register", {
-        ...form,
-        password: encryptRSA(form.password),
-        confirmPassword: encryptRSA(form.confirmPassword),
-        userType: "Buyer",
-      })
+    registerUser({
+      ...form,
+      password: encryptRSA(form.password),
+      confirmPassword: encryptRSA(form.confirmPassword),
+      userType: "Buyer",
+    })
       .then((res) => {
         setResponse({ statusMsg: "Success", msgDetails: res.data.message });
         setShowModal(true);

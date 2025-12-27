@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import axios from "axios";
 
 import Layout from "../components/Layout";
 import SellerNav from "../components/SellerNav";
 import ModalNotif from "../components/ModalNotif";
 import ModalConfirm from "../components/ModalConfirm";
 import RefreshTokenUtility from "../utilities/auth/xrf";
+import { getSellerProducts, deleteProduct } from "../services/store.service";
 
 export default function SellerProductsPage() {
   const navigate = useNavigate();
@@ -40,15 +40,7 @@ export default function SellerProductsPage() {
 
   const fetchProducts = () => {
     setLoading(true);
-    axios
-      .get(
-        `http://localhost:4777/store/products?paginationPage=${paginationPage}&paginationRows=${paginationRows}&sortOrder=${sortOrder}&sortField=${sortField}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      )
+    getSellerProducts(paginationPage, paginationRows, sortOrder, sortField)
       .then((res) => {
         RefreshTokenUtility(res);
         if (res.status === 200 && res.data?.data) {
@@ -82,12 +74,7 @@ export default function SellerProductsPage() {
 
   const handleDelete = (productId) => {
     setLoading(true);
-    axios
-      .delete(`http://localhost:4777/store/product/${productId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    deleteProduct(productId)
       .then((res) => {
         RefreshTokenUtility(res);
         setResponse({

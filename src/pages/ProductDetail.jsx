@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
-import axios from "axios";
 
 import ArrowLeftIcon from "../icons/ArrowLeft";
 import Layout from "../components/Layout";
 import ModalNotif from "../components/ModalNotif";
+import { getProductDetail } from "../services/product.service";
+import { updateCartItem } from "../services/cart.service";
 
 export default function DetailProductPage() {
   const { productID } = useParams();
@@ -19,8 +20,7 @@ export default function DetailProductPage() {
   const token = localStorage.getItem("digishopToken");
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:4777/market/product-detail/${productID}`)
+    getProductDetail(productID)
       .then((res) => setProduct(res.data.data))
       .catch(() => {
         setResponse({
@@ -56,12 +56,7 @@ export default function DetailProductPage() {
       quantity: quantity,
     };
 
-    axios
-      .post("http://localhost:4777/market/cart/submit", payload, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    updateCartItem(productID, quantity)
       .then(() => {
         setResponse({
           statusMsg: "success",

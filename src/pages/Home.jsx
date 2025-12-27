@@ -1,7 +1,10 @@
 import { useEffect, useState, Suspense } from "react";
 import { Link } from "react-router";
 import Layout from "../components/Layout";
-import axios from "axios";
+import {
+  getCategories,
+  getProductsByCategory,
+} from "../services/product.service";
 
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
@@ -9,8 +12,7 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:4777/market/categories")
+    getCategories()
       .then((res) => {
         setCategories(res.data.data);
         if (res.data.data.length > 0) {
@@ -22,10 +24,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (selectedCategoryID) {
-      axios
-        .get(
-          `http://localhost:4777/market/products-by-category?categoryID=${selectedCategoryID}`
-        )
+      getProductsByCategory(selectedCategoryID)
         .then((res) => setProducts(res.data.data))
         .catch((err) => console.error(err));
     }

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import axios from "axios";
 
 import ArrowLeftIcon from "../icons/ArrowLeft";
 import Layout from "../components/Layout";
 import ModalNotif from "../components/ModalNotif";
 import SellerNav from "../components/SellerNav";
 import RefreshTokenUtility from "../utilities/auth/xrf";
+import { addProduct } from "../services/store.service";
+import { getCategories } from "../services/product.service";
+import { uploadProductImage } from "../services/file.service";
 
 export default function SellerAddProductPage() {
   const navigate = useNavigate();
@@ -40,8 +42,7 @@ export default function SellerAddProductPage() {
       return;
     }
 
-    axios
-      .get("http://localhost:4777/market/categories")
+    getCategories()
       .then((res) => setCategories(res.data.data))
       .catch(() => {
         setResponse({
@@ -76,12 +77,7 @@ export default function SellerAddProductPage() {
     const formData = new FormData();
     formData.append("file", file);
 
-    axios
-      .post("http://localhost:4777/file/product-photo/upload", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    uploadProductImage(formData)
       .then((res) => {
         setImageID(res.data.id);
       })
@@ -115,12 +111,7 @@ export default function SellerAddProductPage() {
       imageID,
     };
 
-    axios
-      .post("http://localhost:4777/store/product", payload, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    addProduct(payload)
       .then((res) => {
         RefreshTokenUtility(res);
         if (res.status === 201) {

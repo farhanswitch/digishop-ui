@@ -1,9 +1,9 @@
 // pages/Cart.jsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import axios from "axios";
 import Layout from "../components/Layout";
 import ModalNotif from "../components/ModalNotif";
+import { getCartItems, updateCartItem } from "../services/cart.service";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -27,12 +27,7 @@ const CartPage = () => {
 
     setToken(storedToken);
 
-    axios
-      .get("http://localhost:4777/market/cart", {
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-        },
-      })
+    getCartItems()
       .then((res) => {
         setCartItems(res.data.data);
       })
@@ -47,26 +42,10 @@ const CartPage = () => {
   }, []);
 
   const updateQuantity = (productID, quantityChange) => {
-    axios
-      .post(
-        "http://localhost:4777/market/cart/submit",
-        {
-          productID,
-          quantity: quantityChange,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+    updateCartItem(productID, quantityChange)
       .then(() => {
         // Refresh cart
-        return axios.get("http://localhost:4777/market/cart", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        return getCartItems();
       })
       .then((res) => {
         setCartItems(res.data.data);
