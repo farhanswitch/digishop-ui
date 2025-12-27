@@ -22,7 +22,7 @@ const CheckoutPage = () => {
     if (!storedToken) {
       setResponse({
         statusMsg: "warning",
-        msgDetails: "Sesi tidak valid. Silakan login terlebih dahulu.",
+        msgDetails: "Invalid session. Please login first.",
       });
       setShowModal(true);
       setNextPath("/login");
@@ -44,7 +44,7 @@ const CheckoutPage = () => {
         console.error(err);
         setResponse({
           statusMsg: "error",
-          msgDetails: "Gagal memuat data keranjang.",
+          msgDetails: "Failed to load cart data.",
         });
         setShowModal(true);
       });
@@ -72,7 +72,7 @@ const CheckoutPage = () => {
         <h1 className="text-2xl font-bold">Checkout</h1>
 
         {cartItems.length === 0 ? (
-          <p className="text-gray-600">Keranjang kamu kosong.</p>
+          <p className="text-gray-600">Your cart is empty.</p>
         ) : (
           <>
             <div className="space-y-4">
@@ -95,7 +95,7 @@ const CheckoutPage = () => {
                       Rp {item.productPrice.toLocaleString("id-ID")}
                     </p>
                     <p className="text-sm text-gray-600 mt-1">
-                      Jumlah: {item.cartQuantity}
+                      Quantity: {item.cartQuantity}
                     </p>
                   </div>
                 </div>
@@ -104,13 +104,13 @@ const CheckoutPage = () => {
 
             {/* Alamat Pengiriman */}
             <div>
-              <h2 className="font-semibold mb-2">Alamat Pengiriman</h2>
+              <h2 className="font-semibold mb-2">Shipping Address</h2>
               <select
                 value={selectedAddress}
                 onChange={(e) => setSelectedAddress(e.target.value)}
                 className="w-full border px-4 py-2 rounded"
               >
-                <option value="">Pilih Alamat</option>
+                <option value="">Select Address</option>
                 <option value="Jl. Lodan Timur No. 7, Ancol, Jakarta Utara (Home)">
                   Jl. Lodan Timur No. 7, Ancol (Home)
                 </option>
@@ -125,7 +125,7 @@ const CheckoutPage = () => {
 
             {/* Metode Pembayaran */}
             <div>
-              <h2 className="font-semibold mb-2">Metode Pembayaran</h2>
+              <h2 className="font-semibold mb-2">Payment Method</h2>
               <div className="space-y-2">
                 <label className="flex items-center gap-2">
                   <input
@@ -135,7 +135,7 @@ const CheckoutPage = () => {
                     checked={paymentMethod === "Transfer Bank"}
                     onChange={(e) => setPaymentMethod(e.target.value)}
                   />
-                  Transfer Bank
+                  Bank Transfer
                 </label>
                 <label className="flex items-center gap-2">
                   <input
@@ -163,20 +163,20 @@ const CheckoutPage = () => {
             {/* Rangkuman Biaya */}
             <div className="bg-gray-100 p-4 rounded space-y-2 text-left">
               <p className="text-lg">
-                Total Harga Produk:{" "}
+                Total Product Price:{" "}
                 <span className="font-semibold">
                   Rp {totalPrice.toLocaleString("id-ID")}
                 </span>
               </p>
               <p className="text-lg">
-                Biaya Pengiriman:{" "}
+                Shipping Cost:{" "}
                 <span className="font-semibold">
                   Rp {shippingCost.toLocaleString("id-ID")}
                 </span>
               </p>
               <hr />
               <p className="text-xl font-bold">
-                Total Bayar: Rp{" "}
+                Total Payment: Rp{" "}
                 {(totalPrice + shippingCost).toLocaleString("id-ID")}
               </p>
             </div>
@@ -186,7 +186,7 @@ const CheckoutPage = () => {
                 onClick={handleCheckout}
                 className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
               >
-                Bayar
+                Pay
               </button>
             </div>
           </>

@@ -27,7 +27,7 @@ export default function SellerStoreProfilePage() {
 
       setResponse({
         statusMsg: "warning",
-        msgDetails: "Sesi tidak valid! Silakan login terlebih dahulu.",
+        msgDetails: "Invalid session! Please login first.",
       });
       setNextPath("/login");
       setShowModal(true);
@@ -54,7 +54,7 @@ export default function SellerStoreProfilePage() {
         if (error.response?.status === 401) {
           setResponse({
             statusMsg: "warning",
-            msgDetails: "Sesi tidak valid! Silakan login ulang.",
+            msgDetails: "Invalid session! Please login again.",
           });
           setShowModal(true);
         }
@@ -92,7 +92,7 @@ export default function SellerStoreProfilePage() {
         } else {
           setResponse({
             statusMsg: "Error",
-            msgDetails: "Terjadi kesalahan. Silakan coba lagi.",
+            msgDetails: "An error occurred. Please try again.",
           });
         }
       })
@@ -100,7 +100,7 @@ export default function SellerStoreProfilePage() {
         if (err.response?.status === 401) {
           setResponse({
             statusMsg: "warning",
-            msgDetails: "Sesi tidak valid! Silakan login ulang.",
+            msgDetails: "Invalid session! Please login again.",
           });
           setNextPath("/login");
         } else {
@@ -108,7 +108,7 @@ export default function SellerStoreProfilePage() {
             statusMsg: "Error",
             msgDetails:
               err.response?.data?.msgDetails ||
-              "Gagal menyimpan data profil toko.",
+              "Failed to save store profile data.",
           });
         }
       })

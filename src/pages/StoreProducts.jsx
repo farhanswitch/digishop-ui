@@ -92,7 +92,7 @@ export default function SellerProductsPage() {
         RefreshTokenUtility(res);
         setResponse({
           statusMsg: "success",
-          msgDetails: "Produk berhasil dihapus.",
+          msgDetails: "Product successfully deleted.",
         });
         setNextPath("/seller/products");
         setShowModal(true);
@@ -102,7 +102,7 @@ export default function SellerProductsPage() {
         if (error.response?.status === 401) {
           setResponse({
             statusMsg: "warning",
-            msgDetails: "Session expired. Silakan login ulang.",
+            msgDetails: "Session expired. Please login again.",
           });
           setShowModal(true);
           setNextPath("/");
@@ -252,7 +252,7 @@ export default function SellerProductsPage() {
       <ModalConfirm
         show={showDeleteConfirm}
         setShow={setShowDeleteConfirm}
-        message={`Yakin ingin menghapus produk "${selectedProduct?.name}"?`}
+        message={`Are you sure you want to delete product "${selectedProduct?.name}"?`}
         onConfirm={() => handleDelete(selectedProduct?.id)}
       />
     </Layout>

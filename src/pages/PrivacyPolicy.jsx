@@ -13,7 +13,7 @@ const PrivacyPolicyPage = () => {
 
   return (
     <div className={`${isReady ? "block" : "hidden"}`}>
-      <Layout pageTitle="Kebijakan Privasi">
+      <Layout pageTitle="Privacy Policy">
         <div className="w-full min-h-screen flex items-center justify-center bg-neutral-100">
           <div className="w-full max-w-5xl px-4">
             <div className="bg-white px-8 py-6 rounded-2xl shadow-xl w-full max-w-2xl mx-auto">
@@ -22,45 +22,42 @@ const PrivacyPolicyPage = () => {
                   <ArrowLeftIcon width={28} color="#734B29" />
                 </button>
                 <h1 className="text-xl font-bold text-[#422D23]">
-                  Kebijakan Privasi Pengguna
+                  User Privacy Policy
                 </h1>
               </div>
 
               <div className="text-gray-700 space-y-6 text-left leading-relaxed">
                 <p>
-                  Privasi anda adalah hal yang penting bagi kami. Kami
-                  berkomitmen untuk menjaga keamanan dan kerahasiaan semua
-                  informasi pribadi yang anda berikan saat menggunakan layanan
-                  kami.
+                  Your privacy is important to us. We are committed to maintaining
+                  the security and confidentiality of all personal information you
+                  provide when using our services.
                 </p>
                 <p>
-                  Informasi pribadi yang kami kumpulkan hanya digunakan untuk
-                  keperluan pemrosesan pesanan, peningkatan layanan, serta
-                  komunikasi terkait transaksi atau promosi yang relevan.
+                  The personal information we collect is only used for order
+                  processing, service improvement, and communication regarding
+                  relevant transactions or promotions.
                 </p>
                 <p>
-                  Kami tidak akan membagikan, menjual, atau menyebarluaskan data
-                  anda kepada pihak ketiga tanpa izin anda, kecuali diwajibkan
-                  oleh hukum.
+                  We will not share, sell, or distribute your data to third parties
+                  without your permission, unless required by law.
                 </p>
                 <p>
-                  Kami menggunakan teknologi keamanan seperti enkripsi dan
-                  server yang aman untuk melindungi data anda dari akses yang
-                  tidak sah.
+                  We use security technologies such as encryption and secure
+                  servers to protect your data from unauthorized access.
                 </p>
                 <p>
-                  Anda berhak mengakses, memperbarui, atau menghapus informasi
-                  pribadi anda kapan saja dengan menghubungi tim dukungan kami.
+                  You have the right to access, update, or delete your personal
+                  information at any time by contacting our support team.
                 </p>
                 <p>
-                  Dengan menggunakan layanan kami, anda menyetujui pengumpulan
-                  dan penggunaan data sesuai dengan kebijakan ini. Kebijakan
-                  privasi dapat diperbarui sewaktu-waktu, dan kami akan
-                  menginformasikan perubahan yang signifikan.
+                  By using our services, you agree to the collection and use of
+                  data in accordance with this policy. Privacy policy may be
+                  updated from time to time, and we will inform of significant
+                  changes.
                 </p>
                 <p>
-                  Jika anda memiliki pertanyaan lebih lanjut mengenai privasi,
-                  jangan ragu untuk menghubungi kami. Kami siap membantu.
+                  If you have further questions regarding privacy, please do not
+                  hesitate to contact us. We are ready to help.
                 </p>
               </div>
             </div>

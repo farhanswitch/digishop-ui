@@ -18,7 +18,7 @@ const CartPage = () => {
     if (!storedToken) {
       setResponse({
         statusMsg: "warning",
-        msgDetails: "Sesi tidak valid! Silakan login terlebih dahulu.",
+        msgDetails: "Invalid session! Please login first.",
       });
       setShowModal(true);
       setNextPath("/login");
@@ -40,7 +40,7 @@ const CartPage = () => {
         console.error(err);
         setResponse({
           statusMsg: "error",
-          msgDetails: "Gagal memuat data keranjang.",
+          msgDetails: "Failed to load cart data.",
         });
         setShowModal(true);
       });
@@ -75,18 +75,18 @@ const CartPage = () => {
         console.error(err);
         setResponse({
           statusMsg: "error",
-          msgDetails: "Gagal memperbarui keranjang.",
+          msgDetails: "Failed to update cart.",
         });
         setShowModal(true);
       });
   };
 
   return (
-    <Layout pageTitle="Keranjang Belanja">
+    <Layout pageTitle="Shopping Cart">
       <div className="max-w-4xl mx-auto px-4 py-6">
-        <h1 className="text-2xl font-bold mb-6">Keranjang Kamu</h1>
+        <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
         {cartItems.length === 0 ? (
-          <p className="text-gray-600">Keranjang kamu masih kosong.</p>
+          <p className="text-gray-600">Your cart is still empty.</p>
         ) : (
           <div className="space-y-4">
             {cartItems.map((item) => (
@@ -126,7 +126,7 @@ const CartPage = () => {
                       +
                     </button>
                     <span className="ml-4 text-sm text-gray-500">
-                      Stok: {item.productAmount}
+                      Stock: {item.productAmount}
                     </span>
                   </div>
                 </div>

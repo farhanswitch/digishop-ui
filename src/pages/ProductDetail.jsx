@@ -126,7 +126,7 @@ export default function DetailProductPage() {
               ))}
             </div>
             <p className="text-md  text-blue-800 mb-1">
-              Stok tersedia: {product.amount}
+              Stock available: {product.amount}
             </p>
 
             <p className="text-sm text-gray-600 mb-2">

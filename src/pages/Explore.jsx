@@ -27,15 +27,15 @@ const ExplorePage = () => {
   }, [searchQuery]);
 
   return (
-    <Layout pageTitle={`Hasil Pencarian: ${searchQuery}`}>
+    <Layout pageTitle={`Search Results: ${searchQuery}`}>
       <div className="max-w-5xl mx-auto px-4 py-6">
         <h2 className="text-xl font-bold mb-4">
-          Menampilkan hasil untuk:{" "}
+          Showing results for:{" "}
           <span className="text-[#8B5E3C]">"{searchQuery}"</span>
         </h2>
 
         {products.length === 0 ? (
-          <p className="text-gray-500">Produk tidak ditemukan.</p>
+          <p className="text-gray-500">Product not found.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {products.map((product) => (

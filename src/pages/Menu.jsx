@@ -40,7 +40,7 @@ const MenuPage = () => {
                   <PeopleIcon width={53} color={"black"} />
                 </div>
                 <h2 className="text-2xl font-semibold text-neutral-800 mt-3">
-                  Akun Saya {username ? `- ${username}` : ""}
+                  My Account {username ? `- ${username}` : ""}
                 </h2>
               </div>
 
@@ -63,7 +63,7 @@ const MenuPage = () => {
                   <div className="w-6 h-6">
                     <HelpIcon width={30} color="black" />
                   </div>
-                  <span>Bantuan</span>
+                  <span>Help</span>
                 </Link>
                 <Link
                   to={"/about-us"}
@@ -72,7 +72,7 @@ const MenuPage = () => {
                   <div className="w-6 h-6">
                     <AboutIcon width={30} color="black" />
                   </div>
-                  <span>Tentang Kami</span>
+                  <span>About Us</span>
                 </Link>
                 <Link
                   to={"/faq"}
@@ -90,7 +90,7 @@ const MenuPage = () => {
                   <div className="w-6 h-6">
                     <PrivacyPolicyIcon width={30} color="black" />
                   </div>
-                  <span>Kebijakan Privasi Pengguna</span>
+                  <span>Privacy Policy</span>
                 </Link>
                 <Link
                   to={"/seller/store-profile"}
@@ -121,7 +121,7 @@ const MenuPage = () => {
       <ModalConfirm
         show={showModal}
         setShow={setShowModal}
-        message="Apakah Anda yakin ingin keluar dari akun ini?"
+        message="Are you sure you want to logout?"
         onConfirm={handleLogout}
       />
     </div>

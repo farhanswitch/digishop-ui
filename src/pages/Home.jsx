@@ -32,7 +32,7 @@ const HomePage = () => {
   }, [selectedCategoryID]);
 
   return (
-    <Layout pageTitle="Beranda - EcoLestari">
+    <Layout pageTitle="Home - EcoLestari">
       <main className="w-full bg-white" role="main">
         <section
           aria-label="Hero"
@@ -49,36 +49,36 @@ const HomePage = () => {
         >
           <div className="bg-black/20 text-white text-center px-8 py-6 rounded-lg max-w-5xl">
             <h1 className="text-3xl font-bold mb-2">
-              Temukan Produk dengan Gaya Anda
+              Find Products matching Your Style
             </h1>
             <p className="mb-4">
-              Berbagai koleksi terbaru ramah lingkungan. Dukung produk lokal dan
-              tetap peduli dengan bumi
+              Various latest eco-friendly collections. Support local products and
+              care for the earth
             </p>
             <Link
               to="/explore"
               className="bg-yellow-700 hover:bg-yellow-800 text-white py-2 px-4 rounded"
-              aria-label="Jelajahi koleksi produk"
+              aria-label="Explore collection"
             >
-              Jelajahi Koleksi
+              Explore Collection
             </Link>
           </div>
         </section>
 
         <section
-          aria-labelledby="produk-heading"
+          aria-labelledby="product-heading"
           className="max-w-5xl mx-auto px-4 pb-8"
         >
           <h2
-            id="produk-heading"
+            id="product-heading"
             className="text-xl font-bold text-center mb-4"
           >
-            Kategori Populer
+            Popular Categories
           </h2>
           <div
             className="flex flex-wrap justify-center gap-3 mb-8"
             role="tablist"
-            aria-label="Kategori Produk"
+            aria-label="Product Category"
           >
             {categories.map((cat) => (
               <button
@@ -110,11 +110,11 @@ const HomePage = () => {
                 to={`/product/${product.id}`}
                 key={product.id}
                 className="bg-white shadow rounded-lg overflow-hidden"
-                aria-label={`Lihat detail produk ${product.name}`}
+                aria-label={`View product detail ${product.name}`}
               >
                 <img
                   src={`http://localhost:4777/file/${product.imagePath}`}
-                  alt={`Gambar produk ${product.name}`}
+                  alt={`Product image ${product.name}`}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-4">

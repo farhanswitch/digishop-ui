@@ -22,47 +22,46 @@ const FAQPage = () => {
                   <ArrowLeftIcon width={28} color="#734B29" />
                 </button>
                 <h1 className="text-xl font-bold text-[#422D23]">
-                  FAQ ( Frequently Ask Question )
+                  FAQ (Frequently Asked Questions)
                 </h1>
               </div>
 
               <h2 className="text-lg font-bold text-[#734B29] mb-2">
-                Bagaimana Cara Melakukan Checkout
+                How to Checkout
               </h2>
               <hr className="border border-[#ddd] mb-4" />
 
               <p className="text-gray-700 text-base mb-6">
-                Anda dapat melakukan checkout produk pilihan anda dengan
-                menambahkan produk ke dalam keranjang dan melanjutkan proses
-                checkout.
+                You can checkout your chosen products by adding products to the
+                cart and proceeding with the checkout process.
               </p>
               <h2 className="text-lg font-bold text-[#734B29] mb-2">
-                Metode Pembayaran yang Dapat Dilakukan?
+                Available Payment Methods?
               </h2>
               <hr className="border border-[#ddd] mb-4" />
 
               <p className="text-gray-700 text-base mb-6">
-                Pilihan pembayaran yang ada melalui Transfer Bank, Dompet
-                Digital, dan Cash On Delivery (COD)
+                Payment options available include Bank Transfer, Digital Wallet,
+                and Cash On Delivery (COD).
               </p>
               <h2 className="text-lg font-bold text-[#734B29] mb-2">
-                Berapa Lama Waktu Pengiriman?
+                How Long is the Delivery Time?
               </h2>
               <hr className="border border-[#ddd] mb-4" />
 
               <p className="text-gray-700 text-base mb-6">
-                Waktu pengiriman akan berdasarkan lokasi masing-masing pembeli
+                Delivery time will be based on each buyer's location.
               </p>
               <h2 className="text-lg font-bold text-[#734B29] mb-2">
-                Berapa Lama Waktu Pengembalian?
+                How Long is the Return Time?
               </h2>
               <hr className="border border-[#ddd] mb-4" />
 
               <p className="text-gray-700 text-base mb-6">
-                Batas waktu pengembalian 7 hari sejak produk diterima. Pastikan
-                produk yang ingin dikembalikan tidak termasuk ke dalam produk
-                yang tidak bisa dikembalikan Daftar produk yang tidak dapat
-                dikembalikan: Produk kecantikan Makanan dan Minuman
+                Return deadline is 7 days since the product is received. Ensure
+                the product you want to return is not included in the non-returnable
+                products. List of non-returnable products: Beauty products,
+                Food and Beverages.
               </p>
             </div>
           </div>

@@ -17,7 +17,7 @@ const NotificationPage = () => {
     if (!token) {
       setResponse({
         statusMsg: "warning",
-        msgDetails: "Sesi tidak valid. Silakan login terlebih dahulu.",
+        msgDetails: "Invalid session. Please login first.",
       });
       setShowModal(true);
       setNextPath("/login");
@@ -37,18 +37,18 @@ const NotificationPage = () => {
         console.error(err);
         setResponse({
           statusMsg: "error",
-          msgDetails: "Gagal memuat notifikasi.",
+          msgDetails: "Failed to load notifications.",
         });
         setShowModal(true);
       });
   }, []);
 
   return (
-    <Layout pageTitle="Notifikasi">
+    <Layout pageTitle="Notifications">
       <div className="max-w-3xl mx-auto px-4 py-6">
-        <h1 className="text-2xl font-bold mb-6">Notifikasi</h1>
+        <h1 className="text-2xl font-bold mb-6">Notifications</h1>
         {notifications.length === 0 ? (
-          <p className="text-gray-600">Belum ada notifikasi.</p>
+          <p className="text-gray-600">No notifications yet.</p>
         ) : (
           <div className="space-y-4">
             {notifications.map((notif, index) => (
