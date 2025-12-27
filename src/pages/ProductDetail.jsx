@@ -51,11 +51,6 @@ export default function DetailProductPage() {
       return;
     }
 
-    const payload = {
-      productID,
-      quantity: quantity,
-    };
-
     updateCartItem(productID, quantity)
       .then(() => {
         setResponse({
